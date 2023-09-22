@@ -1,4 +1,4 @@
-.PHONY: postgres createdb dropdb migrateup migratedown
+.PHONY: postgres createdb dropdb migrateup migratedown server test
 
 postgres:
 	docker run --name postgres -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=123 -d postgres:12-alpine
@@ -20,3 +20,6 @@ sqlc:
 
 test:
 	go test -v -cover ./...
+
+server:
+	go run main.go
